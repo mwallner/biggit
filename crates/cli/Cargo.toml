@@ -1,5 +1,5 @@
 [package]
-name = "gitgobig-cli"
+name = "gigobi-cli"
 version.workspace = true
 edition.workspace = true
 

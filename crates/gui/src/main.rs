@@ -89,6 +89,7 @@ struct SetupScreen {
     url_input: String,
     dest_input: String,
     dest_auto_filled: bool,
+    tracked_repo_filter: String,
 }
 
 struct DashboardState {
@@ -127,6 +128,7 @@ enum Message {
     // -- Add local repo --
     PickLocalRepo,
     LocalRepoPicked(Option<PathBuf>),
+    TrackedRepoFilterChanged(String),
     RemoveRepository(usize),
 
     // -- Dashboard --
@@ -197,6 +199,7 @@ impl App {
                 url_input: String::new(),
                 dest_input: String::new(),
                 dest_auto_filled: false,
+                tracked_repo_filter: String::new(),
             }),
             state,
             error: git_error,
@@ -218,6 +221,7 @@ impl App {
                     url_input: String::new(),
                     dest_input: String::new(),
                     dest_auto_filled: false,
+                    tracked_repo_filter: String::new(),
                 });
                 clipboard::read().map(Message::ClipboardRead)
             }
@@ -340,6 +344,12 @@ impl App {
                     }
                     let idx = self.state.repositories.len() - 1;
                     return self.update(Message::GoToDashboard(idx));
+                }
+                Task::none()
+            }
+            Message::TrackedRepoFilterChanged(filter) => {
+                if let Screen::Setup(s) = &mut self.screen {
+                    s.tracked_repo_filter = filter;
                 }
                 Task::none()
             }
@@ -535,10 +545,7 @@ impl App {
                 if let Err(e) = std::process::Command::new(&binary).arg(&path).spawn() {
                     self.set_error(
                         "Failed to launch gitgows",
-                        Some(format!(
-                            "Could not start {}: {e}",
-                            binary.display()
-                        )),
+                        Some(format!("Could not start {}: {e}", binary.display())),
                     );
                 }
                 Task::none()
@@ -862,6 +869,8 @@ impl App {
     // -- Setup screen view --------------------------------------------------
 
     fn view_setup(&self, s: &SetupScreen) -> Element<'_, Message> {
+        let repo_filter = s.tracked_repo_filter.to_lowercase();
+
         let repo_list: Element<'_, Message> = if self.state.repositories.is_empty() {
             text("No repositories tracked yet.").into()
         } else {
@@ -870,6 +879,14 @@ impl App {
                 .repositories
                 .iter()
                 .enumerate()
+                .filter(|(_, repo)| {
+                    if repo_filter.is_empty() {
+                        return true;
+                    }
+                    repo.name.to_lowercase().contains(&repo_filter)
+                    // || repo.path.display().to_string().to_lowercase().contains(&repo_filter)
+                    // || repo.url.to_lowercase().contains(&repo_filter)
+                })
                 .map(|(i, repo)| {
                     row![
                         button(text(&repo.name).size(14)).on_press(Message::GoToDashboard(i)),
@@ -885,7 +902,11 @@ impl App {
                     .into()
                 })
                 .collect();
-            Column::with_children(items).spacing(4).into()
+            if items.is_empty() {
+                text("No tracked repositories match the filter.").into()
+            } else {
+                Column::with_children(items).spacing(4).into()
+            }
         };
 
         let clone_section = column![
@@ -937,6 +958,9 @@ impl App {
             text("gitgobig").size(28),
             rule::horizontal(1),
             text("Tracked Repositories").size(18),
+            text_input("Filter tracked repositories…", &s.tracked_repo_filter)
+                .on_input(Message::TrackedRepoFilterChanged)
+                .padding(8),
             repo_list,
             rule::horizontal(1),
             clone_section,

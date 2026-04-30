@@ -1147,7 +1147,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "gitgobig-cli"
+name = "gigobi-cli"
 version = "0.1.0"
 dependencies = [
  "anyhow",
@@ -1155,6 +1155,19 @@ dependencies = [
  "gitgobig-config",
  "gitgobig-core",
  "tempfile",
+]
+
+[[package]]
+name = "gitgobig"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "gitgobig-config",
+ "gitgobig-core",
+ "iced",
+ "opener",
+ "rfd",
+ "tokio",
 ]
 
 [[package]]
@@ -1179,19 +1192,6 @@ dependencies = [
  "serde_json",
  "tempfile",
  "thiserror 2.0.18",
-]
-
-[[package]]
-name = "gitgobig-gui"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "gitgobig-config",
- "gitgobig-core",
- "iced",
- "opener",
- "rfd",
- "tokio",
 ]
 
 [[package]]

@@ -1,5 +1,5 @@
 [package]
-name = "gitgobig-gui"
+name = "gitgobig"
 version.workspace = true
 edition.workspace = true
 
