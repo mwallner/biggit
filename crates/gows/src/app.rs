@@ -3,7 +3,7 @@ use std::path::PathBuf;
 
 use iced::{event, Subscription, Task, Theme};
 
-use gitgobig_core::CommitEntry;
+use biggit_core::CommitEntry;
 
 use crate::graph::layout::{compute_graph, GraphRow};
 use crate::message::{load_branches, load_commits, Message};

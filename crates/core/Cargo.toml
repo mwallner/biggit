@@ -1,5 +1,5 @@
 [package]
-name = "gitgobig-core"
+name = "biggit-core"
 version.workspace = true
 edition.workspace = true
 

@@ -1,7 +1,7 @@
 use std::path::PathBuf;
 
-use gitgobig_core::git;
-use gitgobig_core::CommitEntry;
+use biggit_core::git;
+use biggit_core::CommitEntry;
 use iced::Event;
 
 use crate::style::ResizeHandle;

@@ -1,7 +1,7 @@
 use std::path::PathBuf;
 
-use gitgobig_config::load_state;
-use gitgobig_core::{AppState, Worktree};
+use biggit_config::load_state;
+use biggit_core::{AppState, Worktree};
 use iced::{clipboard, Task, Theme};
 
 use crate::async_git::GitResult;
@@ -90,7 +90,7 @@ pub(crate) struct DashboardState {
 impl App {
     pub(crate) fn new() -> (Self, Task<Message>) {
         let state = load_state().unwrap_or_default();
-        let git_error = match gitgobig_core::git::check_git_installed() {
+        let git_error = match biggit_core::git::check_git_installed() {
             Ok(_) => None,
             Err(e) => Some(ErrorInfo {
                 message: "git is not installed or not found on PATH".to_string(),

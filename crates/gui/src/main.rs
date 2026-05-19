@@ -14,5 +14,5 @@ fn main() -> iced::Result {
 }
 
 fn app_title(_app: &App) -> String {
-    String::from("gitgobig")
+    String::from("biggit")
 }

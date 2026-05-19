@@ -25,5 +25,5 @@ rfd = "0.17"
 opener = "0.8"
 
 # Internal crates
-gitgobig-core = { path = "crates/core" }
-gitgobig-config = { path = "crates/config" }
+biggit-core = { path = "crates/core" }
+biggit-config = { path = "crates/config" }

@@ -1,7 +1,7 @@
 use std::fs;
 
 use anyhow::{Context, Result};
-use gitgobig_core::AppState;
+use biggit_core::AppState;
 
 use crate::paths::config_dir;
 
@@ -43,7 +43,7 @@ pub fn save_state(state: &AppState) -> Result<()> {
 mod tests {
     use std::path::PathBuf;
 
-    use gitgobig_core::{AppState, Repository};
+    use biggit_core::{AppState, Repository};
 
     /// Round-trip test using a temp directory.
     #[test]

@@ -310,6 +310,66 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c08606f8c3cbf4ce6ec8e28fb0014a2c086708fe954eaa885384a6165172e7e8"
 
 [[package]]
+name = "biggit"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "biggit-config",
+ "biggit-core",
+ "iced",
+ "opener",
+ "rfd",
+ "tokio",
+]
+
+[[package]]
+name = "biggit-cli"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "biggit-config",
+ "biggit-core",
+ "clap",
+ "tempfile",
+]
+
+[[package]]
+name = "biggit-config"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "biggit-core",
+ "dirs",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "thiserror 2.0.18",
+]
+
+[[package]]
+name = "biggit-core"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "thiserror 2.0.18",
+]
+
+[[package]]
+name = "biggit-gows"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "biggit-core",
+ "clap",
+ "iced",
+ "regex",
+ "tokio",
+]
+
+[[package]]
 name = "bit-set"
 version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1144,66 +1204,6 @@ dependencies = [
  "r-efi 6.0.0",
  "wasip2",
  "wasip3",
-]
-
-[[package]]
-name = "gigobi-cli"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "clap",
- "gitgobig-config",
- "gitgobig-core",
- "tempfile",
-]
-
-[[package]]
-name = "gitgobig"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "gitgobig-config",
- "gitgobig-core",
- "iced",
- "opener",
- "rfd",
- "tokio",
-]
-
-[[package]]
-name = "gitgobig-config"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "dirs",
- "gitgobig-core",
- "serde",
- "serde_json",
- "tempfile",
- "thiserror 2.0.18",
-]
-
-[[package]]
-name = "gitgobig-core"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "serde",
- "serde_json",
- "tempfile",
- "thiserror 2.0.18",
-]
-
-[[package]]
-name = "gitgows"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "clap",
- "gitgobig-core",
- "iced",
- "regex",
- "tokio",
 ]
 
 [[package]]

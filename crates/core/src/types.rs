@@ -2,7 +2,7 @@ use std::path::PathBuf;
 
 use serde::{Deserialize, Serialize};
 
-/// A bare-cloned git repository managed by gitgobig.
+/// A bare-cloned git repository managed by biggit.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct Repository {
     /// Display name (typically derived from the URL).

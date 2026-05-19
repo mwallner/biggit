@@ -55,16 +55,16 @@ jobs:
         include:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
-            cli_artifact: gitgobig-cli
-            gui_artifact: gitgobig-gui
+            cli_artifact: biggit-cli
+            gui_artifact: biggit-gui
           - os: macos-latest
             target: aarch64-apple-darwin
-            cli_artifact: gitgobig-cli
-            gui_artifact: gitgobig-gui
+            cli_artifact: biggit-cli
+            gui_artifact: biggit-gui
           - os: windows-latest
             target: x86_64-pc-windows-msvc
-            cli_artifact: gitgobig-cli.exe
-            gui_artifact: gitgobig-gui.exe
+            cli_artifact: biggit-cli.exe
+            gui_artifact: biggit-gui.exe
     steps:
       - uses: actions/checkout@v4
 
@@ -93,11 +93,11 @@ jobs:
       - name: Upload CLI artifact
         uses: actions/upload-artifact@v4
         with:
-          name: gitgobig-cli-${{ matrix.target }}
+          name: biggit-cli-${{ matrix.target }}
           path: target/release/${{ matrix.cli_artifact }}
 
       - name: Upload GUI artifact
         uses: actions/upload-artifact@v4
         with:
-          name: gitgobig-gui-${{ matrix.target }}
+          name: biggit-gui-${{ matrix.target }}
           path: target/release/${{ matrix.gui_artifact }}

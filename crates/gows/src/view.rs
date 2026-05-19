@@ -3,7 +3,7 @@ use iced::widget::{
 };
 use iced::{color, Element, Fill, Font, Length};
 
-use gitgobig_core::CommitEntry;
+use biggit_core::CommitEntry;
 
 use crate::app::App;
 use crate::graph::canvas::FullGraph;

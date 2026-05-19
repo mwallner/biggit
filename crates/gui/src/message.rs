@@ -30,7 +30,7 @@ pub(crate) enum Message {
 
     // -- Worktree management --
     RefreshWorktrees,
-    WorktreesLoaded(Result<Vec<gitgobig_core::Worktree>, String>),
+    WorktreesLoaded(Result<Vec<biggit_core::Worktree>, String>),
     BranchesLoaded(Result<Vec<String>, String>),
     WtPathChanged(String),
     PickWtDir,

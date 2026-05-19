@@ -1,7 +1,7 @@
 use std::path::PathBuf;
 
-use gitgobig_config::save_state;
-use gitgobig_core::Repository;
+use biggit_config::save_state;
+use biggit_core::Repository;
 use iced::{clipboard, Task};
 
 use crate::app::{
@@ -58,7 +58,7 @@ impl App {
                     // Auto-fill destination when default repo dir is configured
                     if let Some(ref base) = self.state.default_repo_dir {
                         if s.dest_input.is_empty() || s.dest_auto_filled {
-                            let name = gitgobig_core::git::repo_name_from_url(&url);
+                            let name = biggit_core::git::repo_name_from_url(&url);
                             if !name.is_empty() {
                                 let suggested = base.join(&name).join(format!("{name}_bare"));
                                 s.dest_input = suggested.display().to_string();
@@ -104,7 +104,7 @@ impl App {
             ),
             Message::LocalRepoPicked(path) => {
                 if let Some(p) = path {
-                    if !gitgobig_core::git::is_git_repo(&p) {
+                    if !biggit_core::git::is_git_repo(&p) {
                         self.set_error(
                             "Not a git repository",
                             Some(format!("{} is not a git repository", p.display())),
@@ -115,13 +115,13 @@ impl App {
                         self.set_error("This repository is already tracked", None);
                         return Task::none();
                     }
-                    let is_bare = gitgobig_core::git::is_bare_repo(&p).unwrap_or(false);
-                    let url = gitgobig_core::git::get_remote_url(&p)
+                    let is_bare = biggit_core::git::is_bare_repo(&p).unwrap_or(false);
+                    let url = biggit_core::git::get_remote_url(&p)
                         .ok()
                         .flatten()
                         .unwrap_or_default();
                     let name = if !url.is_empty() {
-                        gitgobig_core::git::repo_name_from_url(&url)
+                        biggit_core::git::repo_name_from_url(&url)
                     } else {
                         p.file_name()
                             .map(|n| n.to_string_lossy().to_string())
@@ -334,15 +334,15 @@ impl App {
                 Task::none()
             }
             Message::ExploreWorktree(path) => {
-                // Look for gitgows next to the current binary, then fall back to PATH.
+                // Look for biggit-gows next to the current binary, then fall back to PATH.
                 let binary = std::env::current_exe()
                     .ok()
-                    .and_then(|exe| exe.parent().map(|d| d.join("gitgows")))
+                    .and_then(|exe| exe.parent().map(|d| d.join("biggit-gows")))
                     .filter(|p| p.exists())
-                    .unwrap_or_else(|| PathBuf::from("gitgows"));
+                    .unwrap_or_else(|| PathBuf::from("biggit-gows"));
                 if let Err(e) = std::process::Command::new(&binary).arg(&path).spawn() {
                     self.set_error(
-                        "Failed to launch gitgows",
+                        "Failed to launch biggit-gows",
                         Some(format!("Could not start {}: {e}", binary.display())),
                     );
                 }
@@ -482,7 +482,7 @@ impl App {
                                 s.url_input = trimmed.to_string();
                                 // Also auto-fill destination if configured
                                 if let Some(ref base) = self.state.default_repo_dir {
-                                    let name = gitgobig_core::git::repo_name_from_url(trimmed);
+                                    let name = biggit_core::git::repo_name_from_url(trimmed);
                                     if !name.is_empty() {
                                         let suggested =
                                             base.join(&name).join(format!("{name}_bare"));

@@ -1,5 +1,5 @@
 [package]
-name = "gitgobig"
+name = "biggit"
 version.workspace = true
 edition.workspace = true
 
@@ -9,5 +9,5 @@ tokio.workspace = true
 iced = { workspace = true, features = ["tokio"] }
 rfd.workspace = true
 opener.workspace = true
-gitgobig-core.workspace = true
-gitgobig-config.workspace = true
+biggit-core.workspace = true
+biggit-config.workspace = true

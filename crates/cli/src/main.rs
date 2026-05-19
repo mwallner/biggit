@@ -3,12 +3,12 @@ use std::path::{Path, PathBuf};
 use anyhow::{bail, Context, Result};
 use clap::{Parser, Subcommand};
 
-use gitgobig_config::{load_state, save_state};
-use gitgobig_core::git;
-use gitgobig_core::Repository;
+use biggit_config::{load_state, save_state};
+use biggit_core::git;
+use biggit_core::Repository;
 
 #[derive(Parser)]
-#[command(name = "gitgobig", about = "Manage large Git repos via bare clones and worktrees")]
+#[command(name = "biggit", about = "Manage large Git repos via bare clones and worktrees")]
 struct Cli {
     #[command(subcommand)]
     command: Commands,
@@ -83,7 +83,7 @@ enum WorktreeCmd {
 }
 
 fn main() -> Result<()> {
-    git::check_git_installed().context("gitgobig requires git to be installed and on your PATH")?;
+    git::check_git_installed().context("biggit requires git to be installed and on your PATH")?;
     let cli = Cli::parse();
 
     match cli.command {
@@ -202,7 +202,7 @@ fn cmd_worktree_add(
     git::worktree_add(&repo.path, path, branch, new_branch)?;
 
     // Record the worktree in persisted state.
-    repo.worktrees.push(gitgobig_core::Worktree {
+    repo.worktrees.push(biggit_core::Worktree {
         path: path.clone(),
         branch: new_branch.map(String::from).or_else(|| Some(branch.to_string())),
         commit: None,
@@ -314,20 +314,20 @@ mod tests {
 
     #[test]
     fn cli_parses_clone() {
-        let cli = Cli::try_parse_from(["gitgobig", "clone", "https://x.com/r.git", "/tmp/r"]);
+        let cli = Cli::try_parse_from(["biggit", "clone", "https://x.com/r.git", "/tmp/r"]);
         assert!(cli.is_ok());
     }
 
     #[test]
     fn cli_parses_sync() {
-        let cli = Cli::try_parse_from(["gitgobig", "sync", "myrepo"]);
+        let cli = Cli::try_parse_from(["biggit", "sync", "myrepo"]);
         assert!(cli.is_ok());
     }
 
     #[test]
     fn cli_parses_worktree_add() {
         let cli = Cli::try_parse_from([
-            "gitgobig", "worktree", "add", "myrepo", "/tmp/wt", "main",
+            "biggit", "worktree", "add", "myrepo", "/tmp/wt", "main",
         ]);
         assert!(cli.is_ok());
     }
@@ -335,20 +335,20 @@ mod tests {
     #[test]
     fn cli_parses_worktree_add_with_new_branch() {
         let cli = Cli::try_parse_from([
-            "gitgobig", "worktree", "add", "myrepo", "/tmp/wt", "main", "-b", "feat",
+            "biggit", "worktree", "add", "myrepo", "/tmp/wt", "main", "-b", "feat",
         ]);
         assert!(cli.is_ok());
     }
 
     #[test]
     fn cli_parses_worktree_list() {
-        let cli = Cli::try_parse_from(["gitgobig", "worktree", "list", "myrepo"]);
+        let cli = Cli::try_parse_from(["biggit", "worktree", "list", "myrepo"]);
         assert!(cli.is_ok());
     }
 
     #[test]
     fn cli_parses_worktree_remove() {
-        let cli = Cli::try_parse_from(["gitgobig", "worktree", "remove", "myrepo", "/tmp/wt"]);
+        let cli = Cli::try_parse_from(["biggit", "worktree", "remove", "myrepo", "/tmp/wt"]);
         assert!(cli.is_ok());
     }
 }

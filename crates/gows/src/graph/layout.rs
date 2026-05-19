@@ -1,4 +1,4 @@
-use gitgobig_core::CommitEntry;
+use biggit_core::CommitEntry;
 
 /// Per-row graph drawing data.
 #[derive(Clone, Debug)]

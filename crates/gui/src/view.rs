@@ -213,8 +213,8 @@ impl App {
         .spacing(8);
 
         column![
-            text("gitgobig").size(28),
-            rule::horizontal(1),
+            // text("biggit").size(28),
+            // rule::horizontal(1),
             text("Tracked Repositories").size(18),
             text_input("Filter tracked repositories…", &s.tracked_repo_filter)
                 .on_input(Message::TrackedRepoFilterChanged)

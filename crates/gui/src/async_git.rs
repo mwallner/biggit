@@ -6,7 +6,7 @@ use iced::futures::channel::mpsc;
 use tokio::io::{AsyncBufReadExt, BufReader};
 use tokio::process::Command;
 
-use gitgobig_core::{Worktree, git};
+use biggit_core::{Worktree, git};
 
 /// Events emitted by streaming git operations.
 #[derive(Debug, Clone)]

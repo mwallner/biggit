@@ -1,8 +1,8 @@
-# gitgobig
+# biggit
 
 A desktop tool for managing large Git repositories using **bare clones** and **worktrees**.
 
-Instead of cloning full repositories multiple times, gitgobig clones once as a bare repo with partial clone filtering, then creates lightweight worktrees for each branch or task you work on. 
+Instead of cloning full repositories multiple times, biggit clones once as a bare repo with partial clone filtering, then creates lightweight worktrees for each branch or task you work on. 
 This saves disk space and clone time — especially useful for monorepos and large codebases.
 
 ## Features
@@ -22,14 +22,14 @@ This saves disk space and clone time — especially useful for monorepos and lar
 ## Building
 
 ```sh
-git clone https://github.com/mwallner/gitgobig.git
-cd gitgobig
+git clone https://github.com/mwallner/biggit.git
+cd biggit
 cargo build --workspace --release
 ```
 
 The release binaries are placed in `target/release/`:
-- `gitgobig-cli` — command-line interface
-- `gitgobig-gui` — graphical interface
+- `biggit-cli` — command-line interface
+- `biggit` — graphical interface
 
 ### System dependencies (Linux)
 
@@ -45,28 +45,28 @@ sudo apt-get install libgtk-3-dev libxdo-dev libayatana-appindicator3-dev
 
 ```sh
 # Clone a repo as a bare repo with partial clone
-gitgobig-cli clone https://github.com/mwallner/repo.git ./repo.git
+biggit-cli clone https://github.com/mwallner/repo.git ./repo.git
 
 # Fetch all remotes
-gitgobig-cli sync repo
+biggit-cli sync repo
 
 # Create a worktree for a branch
-gitgobig-cli worktree add repo ./worktrees/feature-x feature-x
+biggit-cli worktree add repo ./worktrees/feature-x feature-x
 
 # Create a worktree on a new branch
-gitgobig-cli worktree add repo ./worktrees/my-fix main -b my-fix
+biggit-cli worktree add repo ./worktrees/my-fix main -b my-fix
 
 # List worktrees
-gitgobig-cli worktree list repo
+biggit-cli worktree list repo
 
 # Remove a worktree
-gitgobig-cli worktree remove repo ./worktrees/feature-x
+biggit-cli worktree remove repo ./worktrees/feature-x
 ```
 
 ### GUI
 
 ```sh
-gitgobig-gui
+biggit
 ```
 
 The GUI provides:
@@ -92,7 +92,7 @@ cargo test --workspace
 
 ## CI / Releases
 
-GitHub Actions runs tests on Linux, macOS, and Windows on every push and pull request to `main`. Release builds produce artifacts for all three platforms — see the [Actions tab](https://github.com/mwallner/gitgobig/actions/) for build artifacts or [Releases](https://github.com/mwallner/gitgobig/releases) for published builds.
+GitHub Actions runs tests on Linux, macOS, and Windows on every push and pull request to `main`. Release builds produce artifacts for all three platforms — see the [Actions tab](https://github.com/mwallner/biggit/actions/) for build artifacts or [Releases](https://github.com/mwallner/biggit/releases) for published builds.
 
 ## License
 

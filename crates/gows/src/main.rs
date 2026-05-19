@@ -10,13 +10,13 @@ use std::path::PathBuf;
 
 use clap::Parser;
 
-use gitgobig_core::git;
+use biggit_core::git;
 
 use crate::app::App;
 
-/// gitgows — Git Worktree History Viewer
+/// biggit-gows — Git Worktree History Viewer
 #[derive(Parser)]
-#[command(name = "gitgows")]
+#[command(name = "biggit-gows")]
 struct Cli {
     /// Path to the worktree or bare repository.
     path: PathBuf,
@@ -47,5 +47,5 @@ fn main() -> iced::Result {
 static REPO_PATH: std::sync::OnceLock<PathBuf> = std::sync::OnceLock::new();
 
 fn app_title(app: &App) -> String {
-    format!("gitgows — {}", app.repo_path.display())
+    format!("biggit-gows — {}", app.repo_path.display())
 }
