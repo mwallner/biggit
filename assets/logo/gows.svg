@@ -1,0 +1,15 @@
+<!-- Placeholder: biggit symbol + graph topology triad badge. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <rect x="16" y="16" width="224" height="224" rx="64" fill="#24273A"/>
+  <circle cx="128" cy="128" r="40" fill="#F4DBD6"/>
+  <path d="M128 88v-40" stroke="#8AADF4" stroke-width="16" stroke-linecap="round"/>
+  <path d="M128 168v40" stroke="#A6DA95" stroke-width="16" stroke-linecap="round"/>
+  <path d="M168 128h40" stroke="#F5BDE6" stroke-width="16" stroke-linecap="round"/>
+  <path d="M88 128h-40" stroke="#EED49F" stroke-width="16" stroke-linecap="round"/>
+  <!-- Graph topology badge: three small linked circles, bottom right -->
+  <circle cx="196" cy="196" r="14" fill="#8AADF4"/>
+  <circle cx="216" cy="216" r="8" fill="#A6DA95"/>
+  <circle cx="216" cy="196" r="8" fill="#F5BDE6"/>
+  <path d="M196 196 Q206 206 216 216" stroke="#F4DBD6" stroke-width="3"/>
+  <path d="M196 196 Q206 196 216 196" stroke="#F4DBD6" stroke-width="3"/>
+</svg>

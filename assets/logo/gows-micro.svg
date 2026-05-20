@@ -1,0 +1,13 @@
+<!-- Placeholder: gows micro variant with triad badge. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <rect x="2" y="2" width="20" height="20" rx="6" fill="#24273A"/>
+  <circle cx="12" cy="12" r="4" fill="#F4DBD6"/>
+  <path d="M12 5v3" stroke="#8AADF4" stroke-width="2" stroke-linecap="round"/>
+  <path d="M12 16v3" stroke="#A6DA95" stroke-width="2" stroke-linecap="round"/>
+  <!-- Tiny triad badge -->
+  <circle cx="19" cy="19" r="2" fill="#8AADF4"/>
+  <circle cx="21" cy="21" r="1.2" fill="#A6DA95"/>
+  <circle cx="21" cy="19" r="1.2" fill="#F5BDE6"/>
+  <path d="M19 19 Q20 20 21 21" stroke="#F4DBD6" stroke-width="0.5"/>
+  <path d="M19 19 Q20 19 21 19" stroke="#F4DBD6" stroke-width="0.5"/>
+</svg>

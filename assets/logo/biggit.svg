@@ -1,0 +1,9 @@
+<!-- Placeholder: Replace with final SVG. Symbol = squircle, repo hub, 2-3 rounded arms, Catppuccin Macchiato colors. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <rect x="16" y="16" width="224" height="224" rx="64" fill="#24273A"/>
+  <circle cx="128" cy="128" r="40" fill="#F4DBD6"/>
+  <path d="M128 88v-40" stroke="#8AADF4" stroke-width="16" stroke-linecap="round"/>
+  <path d="M128 168v40" stroke="#A6DA95" stroke-width="16" stroke-linecap="round"/>
+  <path d="M168 128h40" stroke="#F5BDE6" stroke-width="16" stroke-linecap="round"/>
+  <path d="M88 128h-40" stroke="#EED49F" stroke-width="16" stroke-linecap="round"/>
+</svg>
